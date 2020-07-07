@@ -1,15 +1,40 @@
-body {
-    background-color: aqua;
-    font-size: 22px;
+html, body {
+    background-color: #8AC4FF;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: #7A7978;
     text-align: center;
-    padding: 10em;
+    padding: 2em;
+    margin: 0em;
 }
 
 ul {
     list-style-type: none;
 }
 
-a {
-    text-decoration: none;
+li {
+    padding: 2em;
+    color: #7A7978;
+    border-bottom: .2em solid #87CBAC;
 }
 
+a {
+    text-decoration: none;
+    color: #7A7978;
+    font-size: 1.5em;
+}
+
+a:hover {
+    color: #3f3f3f;
+}
+
+h1 {
+    color: #7A7978;
+    font-size: 3em;
+}
+
+h2 {
+    padding: 1.5em;
+    font-size: 1.5em;
+}

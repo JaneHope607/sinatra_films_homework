@@ -1,8 +1,8 @@
 require('sinatra')
-require('sinatra/contrib/all') if development?()
+require('sinatra/contrib/all')
 
 require_relative('./models/film.rb')
-also_reload('./models/*')
+also_reload('./models/film')
 
 get '/films' do
     @films = Film.all()
