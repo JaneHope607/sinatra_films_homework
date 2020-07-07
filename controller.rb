@@ -1,11 +1,7 @@
 require('sinatra')
-require('sinatra/contrib/all')
+require('sinatra/contrib/all') if development?()
 
 require_relative('./models/film.rb')
-require_relative('./models/customer.rb')
-require_relative('./models/screening.rb')
-require_relative('./models/ticket.rb')
-
 also_reload('./models/*')
 
 get '/films' do
@@ -23,12 +19,12 @@ get '/Knives Out' do
     erb(:film2)
 end
 
-get '/films/3' do
+get '/Dunkirk' do
     @films = Film.all()
     erb(:film3)
 end
 
-get '/films/4' do
+get '/1917' do
     @films = Film.all()
     erb(:film4)
 end
