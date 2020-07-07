@@ -79,12 +79,12 @@ class Film
         return Ticket.map_items(ticket_data)
     end
 
-    def find_by_id(id)
+    def self.find_by_id(id)
         sql = "SELECT * FROM films
         WHERE id = $1"
-        values = [@id]
+        values = [id]
         result = SqlRunner.run(sql, values)
-        found_film = Film.map_items(result)
+        found_film = self.new(result.first)
         return found_film
     end
 

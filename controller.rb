@@ -13,22 +13,22 @@ get '/films' do
     erb(:index)
 end
 
-get '/films/1' do
+get '/Mulan' do
     @films = Film.all()
     erb(:film1)
 end
 
-get '/films/2' do
+get '/Knives Out' do
     @films = Film.all()
-    erb(:index)
+    erb(:film2)
 end
 
 get '/films/3' do
     @films = Film.all()
-    erb(:index)
+    erb(:film3)
 end
 
 get '/films/4' do
     @films = Film.all()
-    erb(:index)
+    erb(:film4)
 end
