@@ -58,6 +58,28 @@ class Film
         return Customer.map_items(customers)
     end
 
+    def screenings()
+        sql = "SELECT * FROM screenings
+        WHERE film_id = $1"
+        values = [@id]
+        screening_data = SqlRunner.run(sql, values)
+        return Screening.map_items(screening_data)
+    end
+
+    def tickets()
+        sql = "SELECT tickets.*
+        FROM tickets
+        INNER JOIN screenings
+        ON screenings.film_id = screenings.id
+        WHERE screenings.film_id = $1"
+        values = [@id]
+        ticket_data = SqlRunner.run(sql, values)
+        return Ticket.map_items(ticket_data)
+    end
+
+    def find_by_id(id)
+    end
+
     def self.map_items(data)
         return data.map { |film| Film.new(film) }
     end
