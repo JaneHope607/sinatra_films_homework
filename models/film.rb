@@ -52,7 +52,9 @@ class Film
         sql = "SELECT customers.* FROM customers
         INNER JOIN tickets ON
         tickets.customer_id = customers.id
-        WHERE tickets.film_id = $1"
+        INNER JOIN screenings ON
+        tickets.screening_id = screenings.id
+        WHERE screenings.film_id = $1"
         values = [@id]
         customers = SqlRunner.run(sql, values)
         return Customer.map_items(customers)
@@ -70,7 +72,7 @@ class Film
         sql = "SELECT tickets.*
         FROM tickets
         INNER JOIN screenings
-        ON screenings.film_id = screenings.id
+        ON tickets.screening_id = screenings.id
         WHERE screenings.film_id = $1"
         values = [@id]
         ticket_data = SqlRunner.run(sql, values)
@@ -78,6 +80,12 @@ class Film
     end
 
     def find_by_id(id)
+        sql = "SELECT * FROM films
+        WHERE id = $1"
+        values = [@id]
+        result = SqlRunner.run(sql, values)
+        found_film = Film.map_items(result)
+        return found_film
     end
 
     def self.map_items(data)
